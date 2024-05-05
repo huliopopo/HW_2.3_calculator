@@ -23,48 +23,56 @@ public class CalculatorController {
     @GetMapping("/plus")
     public String plus(@RequestParam(value = "num1", required = false) Integer num1,
                        @RequestParam(value = "num2", required = false) Integer num2) {
-        if (calculatorService.checkIsNull(num1, num2) != null) {
-            return calculatorService.checkIsNull(num1, num2);
+        String check = checkIsNull(num1, num2);
+        if (check != null) {
+            return check;
         } else {
-            calculatorService.adding(num1, num2);
-            return num1 + " + " + num2 + " = " + calculatorService.getResult();
+            return num1 + " + " + num2 + " = " + calculatorService.adding(num1, num2);
         }
     }
 
     @GetMapping("/minus")
     public String minus(@RequestParam(value = "num1", required = false) Integer num1,
                         @RequestParam(value = "num2", required = false) Integer num2) {
-        if (calculatorService.checkIsNull(num1, num2) != null) {
-            return calculatorService.checkIsNull(num1, num2);
+        String check = checkIsNull(num1, num2);
+        if (check != null) {
+            return check;
         } else {
-            calculatorService.adding(num1, num2);
-            return num1 + " + " + num2 + " = " + calculatorService.getResult();
+            return num1 + " - " + num2 + " = " + calculatorService.subtracting(num1, num2);
         }
     }
 
     @GetMapping("/multiply")
     public String multiply(@RequestParam(value = "num1", required = false) Integer num1,
                            @RequestParam(value = "num2", required = false) Integer num2) {
-        if (calculatorService.checkIsNull(num1, num2) != null) {
-            return calculatorService.checkIsNull(num1, num2);
+        String check = checkIsNull(num1, num2);
+        if (check != null) {
+            return check;
         } else {
-            calculatorService.adding(num1, num2);
-            return num1 + " + " + num2 + " = " + calculatorService.getResult();
+            return num1 + " * " + num2 + " = " + calculatorService.multiplying(num1, num2);
         }
     }
 
     @GetMapping("/divide")
     public String divide(@RequestParam(value = "num1", required = false) Integer num1,
                          @RequestParam(value = "num2", required = false) Integer num2) {
-        if (calculatorService.checkIsNull(num1, num2) != null) {
-            return calculatorService.checkIsNull(num1, num2);
+        String check = checkIsNull(num1, num2);
+        if (check != null) {
+            return check;
         } else if (num2 != 0) {
-            calculatorService.dividing(num1, num2);
-            return num1 + " / " + num2 + " = " + calculatorService.getResult();
+            return num1 + " / " + num2 + " = " + calculatorService.dividing(num1, num2);
         } else {
             return "Деление на 0!";
         }
     }
 
-
+    private String checkIsNull(Integer num1, Integer num2) {
+        if (num1 == null) {
+            return "Параметр <b>num1</b> не задан";
+        } else if (num2 == null) {
+            return "Параметр <b>num2</b> не задан";
+        } else {
+            return null;
+        }
+    }
 }
