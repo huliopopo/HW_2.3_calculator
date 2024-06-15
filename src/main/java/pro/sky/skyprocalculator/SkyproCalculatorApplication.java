@@ -10,4 +10,5 @@ public class SkyproCalculatorApplication {
 		SpringApplication.run(SkyproCalculatorApplication.class, args);
 	}
 
+
 }
