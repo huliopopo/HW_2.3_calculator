@@ -59,11 +59,8 @@ public class CalculatorController {
         String check = checkIsNull(num1, num2);
         if (check != null) {
             return check;
-        } else if (num2 != 0) {
-            return num1 + " / " + num2 + " = " + calculatorService.dividing(num1, num2);
-        } else {
-            return "Деление на 0!";
         }
+        return num1 + " / " + num2 + " = " + calculatorService.dividing(num1, num2);
     }
 
     private String checkIsNull(Integer num1, Integer num2) {
